@@ -4,11 +4,13 @@ import { Route, Routes } from 'react-router-dom';
 import Products from './components/pages/Products';
 import About from './components/pages/About';
 import Home from './components/pages/Home';
-import Navbar from './components/static/Navbar';
+import Navbar from './components/layout/Navbar';
 import Login from './components/pages/LoginandSignup/Login';
 import Favoriutes from './components/pages/Favoriutes';
+import { useState } from 'react';
 
 function App() {
+  const [Fav, setFav] = useState([])
   return (
     <>
     <Navbar/>
