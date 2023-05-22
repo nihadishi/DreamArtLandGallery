@@ -1,7 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { FavContext } from '../API/Context'
-import axios from 'axios'
-import { styled } from '@mui/material/styles';
+import { FavContext } from '../API/FavContext';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
@@ -17,11 +15,14 @@ import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
+
 const Favoriutes = () => {
-  const { Fav, setFav } = useContext(FavContext)
-  return (<>
-    {/* {Fav.map(e =>
-      <Card style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' }}>
+  const { Fav, isExists, ToggleFav } = React.useContext(FavContext)
+  console.log(Fav);
+
+  return (
+    <Card style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' }}>
+      {Fav.map(e =>
         <div style={{ display: 'flex', flexDirection: 'row' }}>
           <Card sx={{ maxWidth: 345, margin: 2 }}>
             <CardHeader
@@ -49,7 +50,9 @@ const Favoriutes = () => {
               <Typography variant="body2" color="text.secondary">{e.description}</Typography>
             </CardContent>
             <CardActions disableSpacing>
-
+              <IconButton color="error" aria-label="add to favorites" onClick={() => ToggleFav(e)}>
+                <FavoriteIcon />
+              </IconButton>
               <IconButton aria-label="share">
                 <ShareIcon />
               </IconButton>
@@ -63,8 +66,10 @@ const Favoriutes = () => {
             </Collapse>
           </Card>
         </div>
-      </Card>)} */}
-  </>)
+      )
+      }
+    </Card>
+  )
 }
 
 export default Favoriutes

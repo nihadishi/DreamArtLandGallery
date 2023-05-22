@@ -16,7 +16,8 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import axios from 'axios';
 import { useQuery } from 'react-query';
-import { FavContext } from '../API/Context';
+import { FavContext } from '../API/FavContext';
+
 
 
 export default function Products() {
@@ -28,9 +29,9 @@ export default function Products() {
       staleTime: 20000
     });
   ////////////
-  const { Fav, setFav } = React.useContext(FavContext)
+  const { Fav, isExist, ToggleFav } = React.useContext(FavContext)
   const addFav = (id) => {
-    setFav(id)
+    // setFav(id)
 
   }
 
@@ -41,6 +42,7 @@ export default function Products() {
   };
   //////////////
   return (<Card style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' }}>
+
     {data && data.data?.map(e => <div style={{ display: 'flex', flexDirection: 'row' }}>
       <Card sx={{ maxWidth: 345, margin: 2 }}>
         <CardHeader
@@ -65,12 +67,19 @@ export default function Products() {
         />
         <CardContent>
           <Typography variant="body2" style={{ textTransform: 'uppercase', fontWeight: '700' }}>{e.category}</Typography>
-          <Typography variant="body2" color="text.secondary">{e.description}</Typography>
+          <Typography variant="body2" color="text.secondary" maxHeight={100} overflow={'hidden'}>{e.description}</Typography>
         </CardContent>
         <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites" onClick={() => { addFav(e.id) }}>
-            <FavoriteIcon />
-          </IconButton>
+          {isExist(e.id) ?
+            <>
+              <IconButton aria-label="add to favorites" onClick={() => ToggleFav(e)}>
+                <FavoriteIcon />
+              </IconButton> </> :
+            <>
+              <IconButton color="error" aria-label="remove to favorites" onClick={() => ToggleFav(e)}>
+                <FavoriteIcon />
+              </IconButton></>
+          }
           <IconButton aria-label="share">
             <ShareIcon />
           </IconButton>
@@ -86,8 +95,9 @@ export default function Products() {
           </CardContent>
         </Collapse>
       </Card>
-    </div>)}
-  </Card>)
+    </div>)
+    }
+  </Card >)
 }
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;

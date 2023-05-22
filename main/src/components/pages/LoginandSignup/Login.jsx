@@ -17,7 +17,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const defaultTheme = createTheme();
 
-export default function Login() {
+export default function Login({ children }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -25,6 +25,12 @@ export default function Login() {
       email: data.get('email'),
       password: data.get('password'),
     });
+    if (data.get('email') == 'cus@gmail.com' && data.get('password') == 'cus') {
+      return { children }
+    }
+    else {
+      alert('Wrong Login')
+    }
   };
 
   return (

@@ -8,7 +8,7 @@ import Navbar from './components/layout/Navbar';
 import Login from './components/pages/LoginandSignup/Login';
 import Favoriutes from './components/pages/Favoriutes';
 import { useState } from 'react';
-import { FavContext } from './components/API/Context';
+import { FavContext } from './components/API/FavContext';
 
 function App() {
   const [Fav, setFav] = useState(FavContext.length)// to nav
