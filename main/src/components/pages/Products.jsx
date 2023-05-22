@@ -72,11 +72,11 @@ export default function Products() {
         <CardActions disableSpacing>
           {isExist(e.id) ?
             <>
-              <IconButton aria-label="add to favorites" onClick={() => ToggleFav(e)}>
+              <IconButton color="error" aria-label="add to favorites" onClick={() => ToggleFav(e)}>
                 <FavoriteIcon />
               </IconButton> </> :
             <>
-              <IconButton color="error" aria-label="remove to favorites" onClick={() => ToggleFav(e)}>
+              <IconButton aria-label="remove to favorites" onClick={() => ToggleFav(e)}>
                 <FavoriteIcon />
               </IconButton></>
           }

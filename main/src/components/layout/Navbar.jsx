@@ -36,7 +36,7 @@
 //           onClick: (()=>{navigation('/login')}),
 //         },
 //       ];
-      
+
 //       const [current, setCurrent] = useState('home');
 
 //       const onClick= (e) => {
@@ -64,9 +64,10 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { useNavigate } from 'react-router-dom';
-
+import { FavContext } from '../API/FavContext';
 
 export default function Navbar(props) {
+  const { Fav, isExists, ToggleFav } = React.useContext(FavContext)
   const navigation = useNavigate()
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -111,8 +112,8 @@ export default function Navbar(props) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={()=>{navigation('/login')}}>Login</MenuItem>
-      <MenuItem onClick={()=>{navigation('/login')}}>SignUp</MenuItem>
+      <MenuItem onClick={() => { navigation('/login') }}>Login</MenuItem>
+      <MenuItem onClick={() => { navigation('/login') }}>SignUp</MenuItem>
     </Menu>
   );
   //<<--desktop
@@ -192,8 +193,8 @@ export default function Navbar(props) {
             noWrap
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
-            onClick={()=>{navigation('/')}}
-            style={{cursor:'pointer'}}
+            onClick={() => { navigation('/') }}
+            style={{ cursor: 'pointer' }}
           >
             Dream Art Land Gallery
           </Typography>
@@ -202,15 +203,16 @@ export default function Navbar(props) {
             {/* //products */}
             <IconButton size="large" aria-label="show products" color="inherit">
               <Badge badgeContent={props.fav} color="error">
-                <ShoppingCartIcon  onClick={()=>{navigation('/products')}} />
+                <ShoppingCartIcon onClick={() => { navigation('/products') }} />
               </Badge>
             </IconButton>
             {/* favoriutes */}
             <IconButton size="large" aria-label="show favourites" color="inherit">
               <Badge badgeContent={props.fav} color="error">
-                <FavoriteIcon onClick={()=>{navigation('/favourites')}}/>
+                <FavoriteIcon onClick={() => { navigation('/favourites') }} />
               </Badge>
             </IconButton>
+            <Typography style={{ display: 'flex', alignItems: 'center' }}>{`( ${Fav.length} )`}</Typography>
             {/* login signup */}
             <IconButton
               size="large"
