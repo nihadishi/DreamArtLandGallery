@@ -66,7 +66,7 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import { useNavigate } from 'react-router-dom';
 
 
-export default function Navbar() {
+export default function Navbar(props) {
   const navigation = useNavigate()
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -200,14 +200,14 @@ export default function Navbar() {
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             {/* //products */}
-            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="error">
+            <IconButton size="large" aria-label="show products" color="inherit">
+              <Badge badgeContent={props.fav} color="error">
                 <ShoppingCartIcon  onClick={()=>{navigation('/products')}} />
               </Badge>
             </IconButton>
             {/* favoriutes */}
-            <IconButton size="large" aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={19} color="error">
+            <IconButton size="large" aria-label="show favourites" color="inherit">
+              <Badge badgeContent={props.fav} color="error">
                 <FavoriteIcon onClick={()=>{navigation('/favourites')}}/>
               </Badge>
             </IconButton>

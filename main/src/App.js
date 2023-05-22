@@ -10,13 +10,14 @@ import Favoriutes from './components/pages/Favoriutes';
 import { useState } from 'react';
 
 function App() {
-  const [Fav, setFav] = useState([])
+  const [Fav, setFav] = useState(1)// to nav
+  
   return (
     <>
-    <Navbar/>
+    <Navbar fav={Fav}/>
     <Routes>
       <Route path='/' element={<Home/>}/>
-      <Route path='/products' element={<Products/>}/>
+      <Route path='/products' element={<Products/>} />
       <Route path='/favourites' element={<Favoriutes/>}/>
       <Route path='/about' element={<About/>}/>
       <Route path='/login' element={<Login/>}/>

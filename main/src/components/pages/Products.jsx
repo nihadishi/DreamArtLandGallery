@@ -15,38 +15,28 @@ import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import axios from 'axios';
+import { useQuery } from 'react-query';
 
-const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-  marginLeft: 'auto',
-  transition: theme.transitions.create('transform', {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
 
 export default function Products() {
-
   //datassssss
-  const [ProductsDatas, setProductsDatas] = React.useState([])
-  React.useEffect(() => {
-    axios.get('https://fakestoreapi.com/products')
-    .then(res=> setProductsDatas(res.data))
-    .catch(err=>console.log(err))
-  }, [])
+  const [Fav, setFav] = React.useState([])
+  const {error,isLoading,data,refetch} = useQuery(["products"], ()=>{
+    return axios.get("https://fakestoreapi.com/products");
+  },
+  {
+    staleTime: 20000
+  });
   ////////////
-
-
+  console.log(data);
   const [expanded, setExpanded] = React.useState(false);
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
-  return (<>
-    {ProductsDatas.map(e=><div style={{display:'flex', flexDirection:'row'}}>
-      <Card sx={{ maxWidth: 345 }}>
+  
+  return (<Card style={{display:'flex', flexWrap:'wrap', justifyContent:'space-around'}}>
+    {data && data.data?.map(e=><div style={{display:'flex', flexDirection:'row'}}>
+      <Card sx={{ maxWidth: 345 , margin:2 }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">{e.id}</Avatar>
@@ -64,13 +54,13 @@ export default function Products() {
         height="194"
         image={e.image}
         alt="Paella dish"
-      />
+        />
       <CardContent>
         <Typography variant="body2" style={{textTransform:'uppercase', fontWeight:'700'}}>{e.category}</Typography>
         <Typography variant="body2" color="text.secondary">{e.description}</Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites" onClick={()=>{setFav}}>
+        <IconButton aria-label="add to favorites" onClick={()=>{setFav(data)}}>
           <FavoriteIcon/>
         </IconButton>
         <IconButton aria-label="share">
@@ -89,5 +79,15 @@ export default function Products() {
       </Collapse>
     </Card>
     </div>)}
-  </>)
+  </Card>)
 }
+const ExpandMore = styled((props) => {
+  const { expand, ...other } = props;
+  return <IconButton {...other} />;
+})(({ theme, expand }) => ({
+  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
+  marginLeft: 'auto',
+  transition: theme.transitions.create('transform', {
+    duration: theme.transitions.duration.shortest,
+  }),
+}));
