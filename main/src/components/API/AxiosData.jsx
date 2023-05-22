@@ -1,9 +1,9 @@
-// import axios from "axios";
+// import React from 'react'
 
-// export const AxiosData = axios.create({
-//     baseURL: 'https://fakestoreapi.com/products',
-//     timeout: 20000
-    
+// const AxiosData = () => {
+//     return (
+//         <div>AxiosData</div>
+//     )
 // }
-// )
 
+// export default AxiosData

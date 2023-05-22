@@ -8,20 +8,21 @@ import Navbar from './components/layout/Navbar';
 import Login from './components/pages/LoginandSignup/Login';
 import Favoriutes from './components/pages/Favoriutes';
 import { useState } from 'react';
+import { FavContext } from './components/API/Context';
 
 function App() {
-  const [Fav, setFav] = useState(1)// to nav
-  
+  const [Fav, setFav] = useState(FavContext.length)// to nav
+
   return (
     <>
-    <Navbar fav={Fav}/>
-    <Routes>
-      <Route path='/' element={<Home/>}/>
-      <Route path='/products' element={<Products/>} />
-      <Route path='/favourites' element={<Favoriutes/>}/>
-      <Route path='/about' element={<About/>}/>
-      <Route path='/login' element={<Login/>}/>
-    </Routes>
+      <Navbar fav={Fav} />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/products' element={<Products />} />
+        <Route path='/favourites' element={<Favoriutes />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/login' element={<Login />} />
+      </Routes>
     </>
   );
 }
