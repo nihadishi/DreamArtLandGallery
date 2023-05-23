@@ -65,8 +65,10 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { useNavigate } from 'react-router-dom';
 import { FavContext } from '../API/FavContext';
+import { IsLogin } from '../admin/IsLogin';
 
 export default function Navbar(props) {
+  const { LoginorNot, setLoginorNot } = React.useContext(IsLogin)
   const { Fav, isExists, ToggleFav } = React.useContext(FavContext)
   const navigation = useNavigate()
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -113,7 +115,7 @@ export default function Navbar(props) {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={() => { navigation('/login') }}>Login</MenuItem>
-      <MenuItem onClick={() => { navigation('/login') }}>SignUp</MenuItem>
+      <MenuItem onClick={() => { setLoginorNot(true) }}>Log Out</MenuItem>
     </Menu>
   );
   //<<--desktop

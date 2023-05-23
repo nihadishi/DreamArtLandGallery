@@ -20,8 +20,8 @@ import { IsLogin } from '../../admin/IsLogin';
 const defaultTheme = createTheme();
 
 export default function Login({ children }) {
-  const {LoginorNot, setLoginorNot} = useContext(IsLogin)
-  
+  const { LoginorNot, setLoginorNot } = useContext(IsLogin)
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -124,6 +124,6 @@ export default function Login({ children }) {
             </Box>
           </Grid>
         </Grid>
-      </ThemeProvider> : <div>{children}</div>
+      </ThemeProvider> : <div>{children}{localStorage.setItem('LoginorNot', true)}</div>
   );
 }
