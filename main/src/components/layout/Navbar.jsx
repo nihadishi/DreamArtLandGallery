@@ -63,6 +63,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import { useNavigate } from 'react-router-dom';
 import { FavContext } from '../API/FavContext';
 import { IsLogin } from '../admin/IsLogin';
@@ -202,6 +203,12 @@ export default function Navbar(props) {
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+            {/* //Admin Products */}
+            <IconButton size="large" aria-label="show products" color="inherit">
+              <Badge badgeContent={props.fav} color="error">
+                <AdminPanelSettingsIcon onClick={() => { navigation('/admin/products') }} />
+              </Badge>
+            </IconButton>
             {/* //products */}
             <IconButton size="large" aria-label="show products" color="inherit">
               <Badge badgeContent={props.fav} color="error">

@@ -18,9 +18,9 @@ root.render(
   <FavContextProvider>
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <Login>
+        {/* <Login> */}
         <App />
-        </Login>
+        {/* </Login> */}
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

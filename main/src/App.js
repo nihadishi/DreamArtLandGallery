@@ -9,6 +9,7 @@ import Login from './components/pages/LoginandSignup/Login';
 import Favoriutes from './components/pages/Favoriutes';
 import { useState } from 'react';
 import { FavContext } from './components/API/FavContext';
+import AdminProducts from './components/admin/AdminProducts';
 
 function App() {
   const [Fav, setFav] = useState(FavContext.length)// to nav
@@ -20,6 +21,7 @@ function App() {
         <Route path='/' element={<Home />} />
         {/* <Route element={<Login />}> */}
           <Route path='/products' element={<Products />} />
+          <Route path='/admin/products' element={<Login><AdminProducts /></Login>} />
           <Route path='/favourites' element={<Favoriutes />} />
         {/* </Route> */}
         <Route path='/about' element={<About />} />
