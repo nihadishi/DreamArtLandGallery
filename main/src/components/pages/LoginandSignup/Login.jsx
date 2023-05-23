@@ -1,4 +1,4 @@
-import * as React from 'react';
+
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,31 +12,34 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useContext, useEffect, useState } from 'react';
+import { IsLogin } from '../../admin/IsLogin';
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
 const defaultTheme = createTheme();
 
 export default function Login({ children }) {
+  const {LoginorNot, setLoginorNot} = useContext(IsLogin)
+  
   const handleSubmit = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
       email: data.get('email'),
       password: data.get('password'),
     });
     if (data.get('email') == 'cus@gmail.com' && data.get('password') == 'cus') {
-      return true
+      setLoginorNot(false)
     }
     else {
-      alert('Wrong Login')
-      return false
+      alert('Wrong Password')
+      setLoginorNot(true)
     }
   };
 
   return (
-    handleSubmit ?
-      <div>{children}</div> :
+    LoginorNot ?
       <ThemeProvider theme={defaultTheme}>
         <Grid container component="main" sx={{ height: '100vh' }}>
           <CssBaseline />
@@ -55,6 +58,7 @@ export default function Login({ children }) {
             }}
           />
           <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+            <h1>user: cus@gmail.com pswd: cus</h1>
             <Box
               sx={{
                 my: 8,
@@ -80,6 +84,7 @@ export default function Login({ children }) {
                   name="email"
                   autoComplete="email"
                   autoFocus
+
                 />
                 <TextField
                   margin="normal"
@@ -119,6 +124,6 @@ export default function Login({ children }) {
             </Box>
           </Grid>
         </Grid>
-      </ThemeProvider>
+      </ThemeProvider> : <div>{children}</div>
   );
 }

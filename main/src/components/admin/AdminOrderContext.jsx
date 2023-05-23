@@ -10,7 +10,6 @@ export const AdminContextProvider = ({ children }) => {
     }
     const values = {
         CustomerOrders,
-        setCustomerOrders,
         AllCustomerOrders
     }
 

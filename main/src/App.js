@@ -18,10 +18,11 @@ function App() {
       <Navbar fav={Fav} />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/products' element={<Products />} />
-        <Route path='/favourites' element={<Favoriutes />} />
+        {/* <Route element={<Login />}> */}
+          <Route path='/products' element={<Products />} />
+          <Route path='/favourites' element={<Favoriutes />} />
+        {/* </Route> */}
         <Route path='/about' element={<About />} />
-        <Route path='/login' element={<Login />} />
         <Route path='/login' element={<Login />} />
 
         {/* <Route>

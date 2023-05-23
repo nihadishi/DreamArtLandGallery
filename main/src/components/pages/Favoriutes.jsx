@@ -20,7 +20,7 @@ import { FavContext } from '../API/FavContext';
 
 const Favoriutes = () => {
   const { Fav, isExists, ToggleFav } = React.useContext(FavContext)
-  const { CustomerOrders, setCustomerOrders, AllCustomerOrders } = React.useContext(AdminOrderContext)
+  const { CustomerOrders, AllCustomerOrders } = React.useContext(AdminOrderContext)
   console.log(Fav);
 
   return (<>
