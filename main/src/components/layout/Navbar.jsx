@@ -212,7 +212,7 @@ export default function Navbar(props) {
                 <FavoriteIcon onClick={() => { navigation('/favourites') }} />
               </Badge>
             </IconButton>
-            <Typography style={{ display: 'flex', alignItems: 'center' }}>{`( ${Fav.length} )`}</Typography>
+            <Typography style={{ display: 'flex', alignItems: 'center' }}>{Fav.length > 0 ? `(${Fav.length})` : ''}</Typography>
             {/* login signup */}
             <IconButton
               size="large"

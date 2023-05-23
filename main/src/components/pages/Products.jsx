@@ -30,11 +30,6 @@ export default function Products() {
     });
   ////////////
   const { Fav, isExist, ToggleFav } = React.useContext(FavContext)
-  const addFav = (id) => {
-    // setFav(id)
-
-  }
-
   // console.log(data);
   const [expanded, setExpanded] = React.useState(false);
   const handleExpandClick = () => {

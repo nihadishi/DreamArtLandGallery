@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { FavContext } from '../API/FavContext';
+
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
@@ -12,15 +12,18 @@ import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-
+import Button from '@mui/material/Button';
+import SendIcon from '@mui/icons-material/Send';
+import { AdminOrderContext } from '../admin/AdminOrderContext';
+import { FavContext } from '../API/FavContext';
 
 const Favoriutes = () => {
   const { Fav, isExists, ToggleFav } = React.useContext(FavContext)
+  const { CustomerOrders, setCustomerOrders, AllCustomerOrders } = React.useContext(AdminOrderContext)
   console.log(Fav);
 
-  return (
+  return (<>
     <Card style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' }}>
       {Fav.map(e =>
         <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -47,7 +50,7 @@ const Favoriutes = () => {
             />
             <CardContent>
               <Typography variant="body2" style={{ textTransform: 'uppercase', fontWeight: '700' }}>{e.category}</Typography>
-              <Typography variant="body2" color="text.secondary">{e.description}</Typography>
+              <Typography variant="body2" color="text.secondary" maxHeight={100} overflow={'hidden'}>{e.description}</Typography>
             </CardContent>
             <CardActions disableSpacing>
               <IconButton color="error" aria-label="add to favorites" onClick={() => ToggleFav(e)}>
@@ -69,6 +72,16 @@ const Favoriutes = () => {
       )
       }
     </Card>
+    {Fav.length > 0 ?
+      <Button style={{ width: '100%' }} variant="contained" endIcon={<SendIcon />} onClick={() => AllCustomerOrders([...Fav])}>
+        {/* ???????????????????????????????????????????????????????? */}
+        Buy All
+      </Button> :
+      <Button style={{ width: '100%' }} variant="disabled" endIcon={<SendIcon />}>
+        Buy All
+      </Button>
+    }
+  </>
   )
 }
 

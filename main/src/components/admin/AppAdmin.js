@@ -11,26 +11,26 @@ import { useState } from 'react';
 import { FavContext } from './components/API/FavContext';
 
 function App() {
-  const [Fav, setFav] = useState(FavContext.length)// to nav
+    const [Fav, setFav] = useState(FavContext.length)// to nav
 
-  return (
-    <>
-      <Navbar fav={Fav} />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/products' element={<Products />} />
-        <Route path='/favourites' element={<Favoriutes />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/login' element={<Login />} />
+    return (
+        <>
+            <Navbar fav={Fav} />
+            <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/products' element={<Products />} />
+                <Route path='/favourites' element={<Favoriutes />} />
+                <Route path='/about' element={<About />} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/login' element={<Login />} />
 
-        {/* <Route>
+                {/* <Route>
         <Route></Route>
 
         </Route> */}
-      </Routes>
-    </>
-  );
+            </Routes>
+        </>
+    );
 }
 
 export default App;
