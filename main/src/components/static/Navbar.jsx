@@ -1,55 +1,4 @@
-// import React, { useState } from 'react'
-// // import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
-// import { MenuProps } from 'antd';
-// import { Menu } from 'antd';
-// import { Link, NavLink, useNavigate } from 'react-router-dom';
-// import Home from '../pages/Home';
-// import About from '../pages/About';
-// import Products from '../pages/Products';
-// const Navbar = () => {
-//     const navigation = useNavigate()
-//     const items = [
-//         {
-//           label: 'Home',
-//           key: 'home',
-//           onClick: (()=>{navigation('/')}),
-//         //   icon: <MailOutlined />,
-//         },
-//         {
-//           label: 'About',
-//           key: 'about',
-//           onClick: (()=>{navigation('/about')}),
-//         },
-//         {
-//           label: 'Products',
-//           key: 'allproducts',         
-//           onClick: (()=>{navigation('/products')}),
-//         },
-//         {
-//           label: 'Favorites',
-//           key: 'bestsellers',         
-//           onClick: (()=>{navigation('/products')}),
-//         },
-//         {
-//           label: 'Login',
-//           key: 'Login',
-//           onClick: (()=>{navigation('/login')}),
-//         },
-//       ];
-      
-//       const [current, setCurrent] = useState('home');
-
-//       const onClick= (e) => {
-//         setCurrent(e.key);
-//         console.log(e);
-//       };
-
-//       return <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} className='navbar'/>;
-// }
-
-// export default Navbar
 import * as React from 'react';
-import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -60,7 +9,6 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { useNavigate } from 'react-router-dom';

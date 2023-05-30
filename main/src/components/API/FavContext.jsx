@@ -3,8 +3,13 @@ import { createContext, useState } from "react";
 export const FavContext = createContext(null);
 
 export const FavContextProvider = ({ children }) => {
+    // const [Fav, setFav] = useState([localStorage.getItem('favcontext')])
     const [Fav, setFav] = useState([])
-
+    const localDatas = () => {
+        localStorage.getItem('favcontext') && localStorage.getItem('favcontext').map(e => {
+            
+        })
+    }
     const isExist = (id) => {//have?
         return Fav.some((item) => item.id == id)
     }

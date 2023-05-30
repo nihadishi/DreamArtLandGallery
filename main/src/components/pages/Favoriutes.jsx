@@ -21,8 +21,9 @@ import { FavContext } from '../API/FavContext';
 const Favoriutes = () => {
   const { Fav, isExists, ToggleFav } = React.useContext(FavContext)
   const { CustomerOrders, AllCustomerOrders } = React.useContext(AdminOrderContext)
+  const { Total, setTotal } = React.useState(0)
   console.log(Fav);
-
+  localStorage.setItem('favcontext', Fav.map(e => e.id))
   return (<>
     <Card style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' }}>
       {Fav.map(e =>
@@ -68,6 +69,11 @@ const Favoriutes = () => {
               </CardContent>
             </Collapse>
           </Card>
+          {/* <div>
+            {
+              Total
+            }
+          </div> */}
         </div>
       )
       }
